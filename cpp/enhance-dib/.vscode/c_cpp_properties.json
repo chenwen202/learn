@@ -1,0 +1,42 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.13.26128/include",
+                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.13.26128/atlmfc/include",
+                "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Auxiliary/VS/include",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/ucrt",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/um",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/shared",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/winrt",
+                "C:/Program Files (x86)/Windows Kits/NETFXSDK/4.6.1/Include/um"          
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "browse": {
+                "path": [                  
+                    "${workspaceFolder}/include",
+                    "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.13.26128/include",
+                    "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.13.26128/atlmfc/include",
+                    "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Auxiliary/VS/include",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/ucrt",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/um",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/shared",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.16299.0/winrt",
+                    "C:/Program Files (x86)/Windows Kits/NETFXSDK/4.6.1/Include/um"   
+                ]
+            },
+            "windowsSdkVersion": "10.0.16299.0",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.13.26128/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}
