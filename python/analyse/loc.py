@@ -14,6 +14,7 @@ mask_circle1 = (x - x1)**2 + (y - y1)**2 < r1**2
 mask_circle2 = (x - x2)**2 + (y - y2)**2 < r2**2
 image = np.logical_or(mask_circle1, mask_circle2)
 
+
 # Now we want to separate the two objects in image
 # Generate the markers as local maxima of the distance to the background
 distance = ndi.distance_transform_edt(image)
@@ -22,7 +23,7 @@ local_maxi = peak_local_max(distance, indices=False, footprint=np.ones((3, 3)),
 markers = ndi.label(local_maxi)[0]
 labels = watershed(-distance, markers, mask=image)
 
-fig, axes = plt.subplots(ncols=3, figsize=(9, 3), sharex=True, sharey=True)
+fig, axes = plt.subplots(ncols=4, figsize=(9, 3), sharex=True, sharey=True)
 ax = axes.ravel()
 
 ax[0].imshow(image, cmap=plt.cm.gray)
@@ -31,6 +32,8 @@ ax[1].imshow(-distance, cmap=plt.cm.gray)
 ax[1].set_title('Distances')
 ax[2].imshow(labels, cmap=plt.cm.nipy_spectral)
 ax[2].set_title('Separated objects')
+
+ax[3].imshow(mask_circle1,cmap=plt.cm.gray)
 
 for a in ax:
     a.set_axis_off()
