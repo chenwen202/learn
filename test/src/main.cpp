@@ -1,13 +1,16 @@
 #include <iostream>
 #include <math.h>
+#include <string>
 
 int main() {
     int b = 12000;
     char a = b;
-
+    std::string str; 
     std::cout<< "int b = 12000, actual "<<(int)a <<std::endl;
+    std::cin>>str;
+    std::cout<<str<<std::endl;
     std::getchar();
-
+    return 0;
 }
 
 
