@@ -25,7 +25,7 @@
             transform-style: preserve-3d;
             transform: rotate3d(30, 20, 0, 45deg) scale3d(0.5, 0.5, 0.5);
             perspective: 10000px;
-            animation: testanimations 5s linear infinite;
+            animation: testanimations 10s linear infinite;
         }
         
         .share {
@@ -66,18 +66,14 @@
         }
         
         @keyframes testanimations {
-            0% {
-                transform: rotate3d(1, 1, 0, 45deg) scale3d(0.5, 0.5, 0.5);
-            }
-            30% {
-                transform: rotate3d(1, 1, 1, 100deg) scale3d(0.5, 0.5, 0.5);
-            }
-            70% {
-                transform: rotate3d(1, 1, 1, 180deg) scale3d(0.5, 0.5, 0.5);
-            }
             100% {
-                transform: rotate3d(1, 1, 0, 45deg) scale3d(0.5, 0.5, 0.5);
+                transform: rotatex(360deg) rotatex(360deg) rotatex(360deg);
             }
+        }
+        
+        .share div {
+            transform: rotateX(0deg);
+            animation: ani_div 3s linear infite;
         }
         
         @keyframes ani_div {
@@ -91,18 +87,37 @@
                 transform: translateZ(0px);
             }
         }
+        
+        @keyframes rotatex {
+            20% {
+                transform: rotateX(0deg);
+                background-size: 300px 300px;
+            }
+            40% {
+                transform: rotateX(540deg);
+                background-size: 100px 100px;
+            }
+            60% {
+                transform: rotateX(540deg);
+                background-size: 100px 100px;
+            }
+            80% {
+                transform: rotateX(0deg);
+                background-size: 300px 300px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
         <div id="box">
-            <div class="share box_top"></div>
-            <div class="share box_right"></div>
-            <div class="share box_bottom"></div>
-            <div class="share box_left"></div>
-            <div class="share box_front"></div>
-            <div class="share box_back"></div>
+            <div class="box_top share"></div>
+            <div class="box_right share"></div>
+            <div class="box_bottom share"></div>
+            <div class="box_left share"></div>
+            <div class="box_front share"></div>
+            <div class="box_back share"></div>
         </div>
     </div>
 
@@ -120,7 +135,7 @@
                     var div = document.createElement("div");
                     var x = c * 100;
                     var y = r * 100;
-                    div.style.cssText = "width:100px;height:100px;position:fixed; left:" + x + "px; top:" + y + "px; border: 2px solid #fff; box-sizing: border-box; animation: ani_div 3s linear infite;";
+                    div.style.cssText = "width:100px;height:100px;position:fixed; left:" + x + "px; top:" + y + "px; border: 2px solid #fff; box-sizing: border-box;";
                     console.log(div.style.cssText);
                     arr[k].appendChild(div);
                 }
