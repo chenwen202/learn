@@ -38,9 +38,19 @@
 		}
 		#result {
 			width: 600px;
-			height: 200px;	
+			height:200px;
 			border: 1px solid #ccc;	
-			margin: 20px auto;				
+			margin: auto;				
+		}
+
+		#result table{
+			width:100%;
+			height:100%;
+			line-height:30px;	
+		}
+		#result th,td{	
+			text-align: center;
+			text-indent: 2em				
 		}
 
 	</style>
@@ -60,7 +70,7 @@
 	<script type="text/javascript">
 		alert("请输入学生的得分！");
 		var scores =  new Array();
-		var NUM	= 2;
+		var NUM	= 7;
 
 		function print(total, avg, notPass)
 		{
@@ -69,34 +79,37 @@
 			var div = document.getElementById("result");		
 
 			var table=document.createElement("table");
-			var thead = table.createTHead(); 
-            var tbody = table.createTBody(); 
+			var thead = document.createElement("thead"); 
+            var tbody = document.createElement("tbody"); 
+            table.appendChild(thead);
+            table.appendChild(tbody);
 
-			var tr=document.createElement("tr");			
-			thead.innerHTML = "统计结果";
+			var tr=document.createElement("tr");	
+			var th=document.createElement("th");			
+			th.innerHTML = "统计结果";
 			tr.appendChild(th);
-			table.appendChild(tr);
+			thead.appendChild(tr);
 
  			// 总分
  			tr=document.createElement("tr");
  			var td=document.createElement("td");
-			td.value = "总分： " + total;
+			td.innerHTML = "总分： " + total;
 			tr.appendChild(td);
-			table.appendChild(tr);
+			tbody.appendChild(tr);
 
 			// 平均分
 			tr=document.createElement("tr");
  			td=document.createElement("td");
-			td.value = "平均分： " + avg;
+			td.innerHTML = "平均分： " + Math.round(avg * 100)/100;
 			tr.appendChild(td);
-			table.appendChild(tr);
+			tbody.appendChild(tr);
 
  			//不及格
  			tr=document.createElement("tr");
  			td=document.createElement("td");
-			td.value = "不及格： " + notPass;
+			td.innerHTML = "不及格： " + notPass;
 			tr.appendChild(td);
-			table.appendChild(tr);
+			tbody.appendChild(tr);
 
 			div.appendChild(table);
 		}
@@ -107,8 +120,8 @@
 			var notPass = 0; 
 			for( var i =0; i < scores.length; ++i)
 			{
-				total += scores[i];
-				if( scores[i] < 60 )
+				total += Number(scores[i]);
+				if( Number(scores[i]) < 60 )
 					++notPass;
 			}
 
@@ -118,8 +131,7 @@
 		function msg() {				
 			if( NUM == scores.length ) return;
 
-			var obj = document.getElementsByName("score")[0];		
-
+			var obj = document.getElementsByName("score")[0];
 			scores[scores.length] = obj.value;
 			if( NUM == scores.length )
 			{
