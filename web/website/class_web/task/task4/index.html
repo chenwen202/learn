@@ -15,12 +15,10 @@
 			margin: 0 auto;
 		}
 		
-		.input {
-			width: 600px;
+		.input {			
 			height: 40px;	
 			border: 1px solid #ccc;	
-			margin: 20px auto;	
-			vertical-align: center;
+			margin: 20px auto;				
 		}
 
 		.input p{
@@ -36,15 +34,15 @@
 			float: left;				
 			margin: 10px 10px;				
 		}
-		#result {
-			width: 600px;
+
+		#result {			
 			height:200px;
 			border: 1px solid #ccc;	
 			margin: auto;				
 		}
 
 		#result table{
-			width:100%;
+			width:100%;			
 			height:100%;
 			line-height:30px;	
 		}
@@ -114,31 +112,27 @@
 			div.appendChild(table);
 		}
 
-		function output(){
-			var arr = document.getElementById("result");
-			var total = 0;
-			var notPass = 0; 
-			for( var i =0; i < scores.length; ++i)
-			{
-				total += Number(scores[i]);
-				if( Number(scores[i]) < 60 )
-					++notPass;
-			}
-
-			print(total, total/NUM, notPass);
-		}
-
+		
 		function msg() {				
 			if( NUM == scores.length ) return;
 
 			var obj = document.getElementsByName("score")[0];
-			scores[scores.length] = obj.value;
-			if( NUM == scores.length )
+			scores[scores.length] = Number(obj.value);
+			if( NUM != scores.length ) 
 			{
-				output();
+				alert("请输入下一个学生的得分！");
 				return;
 			}
-			alert("请输入下一个学生的得分！");
+
+			var sum = 0;
+			var notPass = 0; 
+			for( var i =0; i < scores.length; ++i)
+			{
+				sum += scores[i];
+				if( scores[i] < 60 ) ++notPass;
+			}
+
+			print(sum, sum/NUM, notPass);
 		}
 	</script>
 </body>
