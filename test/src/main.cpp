@@ -4,12 +4,6 @@
 #include "mathfunc.h"
 
 int main() {
-    // int b = 12000;
-    // char a = b;
-    // std::string str; 
-    // std::cout<< "int b = 12000, actual "<<(int)a <<std::endl;
-    // std::cin>>str;
-    // std::cout<<str<<std::endl;
     
     MathFunc mf;
     std::string str1;
