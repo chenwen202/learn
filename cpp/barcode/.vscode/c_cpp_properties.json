@@ -3,7 +3,8 @@
         "name": "Win32",
         "includePath": [
             "${workspaceFolder}/**",
-            "C:/cv_build_minggw/install/include"
+            "C:/cv_build_minggw/install/include",
+            "F:/work/workspace/SynologyDrive/libs/win64/include"
         ],
         "defines": [
             "_DEBUG",
