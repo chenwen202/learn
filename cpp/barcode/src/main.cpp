@@ -9,7 +9,6 @@ using namespace std;
 using namespace zbar;
 
 
-
 int main(int argc,char* argv[])
 {
     char fileNameString[100]={0};
@@ -22,6 +21,7 @@ int main(int argc,char* argv[])
         sprintf(fileNameString,"./bin/barcode.jpg",fileCount);
         sprintf(windowNameString,"result 0%d",fileCount);
         sprintf(resultFileNameSring,"./bin/barcodeResult_0%d.jpg",fileCount);
+       
         //读取图像
         srcImage = imread(fileNameString);
         if(srcImage.empty())
@@ -113,8 +113,8 @@ int main(int argc,char* argv[])
             // //看看显示效果,找的对不对
             // imshow(windowNameString,srcImage);
             //将扫描的图像裁剪下来,并保存为相应的结果,保留一些X方向的边界,所以对rect进行一定的扩张
-             myRect.x= myRect.x;
-             myRect.y= myRect.y;
+            //  myRect.x= myRect.x;
+            //  myRect.y= myRect.y;
              myRect.width = myRect.width;
              myRect.height = myRect.height;
             Mat resultImage = Mat(srcImage,myRect);
