@@ -15,6 +15,7 @@
             height: 300px;
             margin: 100px auto;
             /* border: 1px solid #ccc; */
+            perspective: 10000px;
         }
         
         #box {
@@ -22,9 +23,7 @@
             height: 300px;
             margin: 0 auto;
             position: absolute;
-            transform-style: preserve-3d;
-            transform: rotate3d(30, 20, 0, 45deg) scale3d(0.5, 0.5, 0.5);
-            perspective: 10000px;
+            transform-style: preserve-3d;            
             animation: testanimations 10s linear infinite;
         }
         
@@ -32,60 +31,54 @@
             width: 300px;
             height: 300px;
             margin: 0 auto;
-            position: fixed;
+            position: fixed;         
+            transform-style: preserve-3d;
         }
         
         .box_top {
-            background-color: red;
+            /*background-color: red;*/
             transform: translateZ(150px) rotateX(0deg);
         }
         
         .box_right {
-            background-color: green;
+            /*background-color: green;*/
             transform: translateX(-150px) rotateY(90deg);
         }
         
         .box_bottom {
-            background-color: blue;
+           /* background-color: blue;*/
             transform: translateZ(-150px) rotateX(180deg);
         }
         
         .box_left {
-            background-color: yellow;
+            /*background-color: yellow;*/
             transform: translateX(150px) rotateY(-90deg);
         }
         
         .box_front {
-            background-color: orange;
+            /*background-color: orange;*/
             transform: translateY(150px) rotateX(-90deg);
         }
         
         .box_back {
-            background-color: purple;
+            /*background-color: purple;*/
             transform: translateY(-150px) rotateX(90deg);
         }
         
         @keyframes testanimations {
             100% {
-                transform: rotatex(360deg) rotatex(360deg) rotatex(360deg);
+                transform: rotatex(360deg) rotatey(360deg) rotatez(360deg);
             }
         }
         
-        .share div {
-            transform: rotateX(0deg);
-            animation: ani_div 3s linear infite;
+      .share div:first-child,.share div:nth-child(3),.share div:nth-child(5),.share div:nth-child(7),.share div:nth-child(9){
+            transform: rotateY(0deg);
+            animation: rotatey 6s linear infinite;
         }
         
-        @keyframes ani_div {
-            0% {
-                transform: translateZ(0px);
-            }
-            50% {
-                transform: translateZ(100px);
-            }
-            100% {
-                transform: translateZ(0px);
-            }
+        .box-page div:nth-child(2),.box-page div:nth-child(4),.box-page div:nth-child(6),.box-page div:nth-child(8){
+            transform:rotateX(0deg);
+            animation: rotatex 6s linear infinite;
         }
         
         @keyframes rotatex {
@@ -106,6 +99,50 @@
                 background-size: 300px 300px;
             }
         }
+
+        @keyframes rotatey{
+            20%{
+                transform: rotateY(0deg);
+                background-size: 300px 300px;
+            }
+            40%{
+                /*background-image: url("img/img.jpg");*/
+                transform: rotateY(540deg);
+                background-size: 100px 100px;
+            }
+            60%{
+                /*background-image: url("img/img.jpg");*/
+                transform: rotateY(540deg);
+                background-size: 100px 100px;
+            }
+            80%{
+                transform: rotateY(0deg);
+                background-size:300px 300px;
+            }
+        }
+
+       
+        @keyframes rotatez{
+            20%{
+                transform: rotateZ(0deg);
+                background-size: 300px 300px;
+            }
+            40%{
+                /*background-image: url("img/img.jpg");*/
+                transform: rotateZ(540deg);
+                background-size: 100px 100px;
+            }
+            60%{
+                /*background-image: url("img/img.jpg");*/
+                transform: rotateZ(540deg);
+                background-size: 100px 100px;
+            }
+            80%{
+                transform: rotateZ(0deg);
+                background-size:300px 300px;
+            }
+        }
+
     </style>
 </head>
 
@@ -122,21 +159,24 @@
     </div>
 
     <script>
-        var arr = document.getElementsByClassName("share");
+        var arr = document.querySelectorAll("#box>div");
         console.log(arr.length);
-        for (var k = 0; k < arr.length; ++k) {
-            arr[k].style.cssText = "background-image: url('images/a" + k + ".jpg'); position:absolute;transform-style: preserve-3d;";
-            // arr[k].style.cssText += "animation: ani_div 3s linear infite;";
-            console.log(arr[k].style.cssText);
-
+        for (var k = 0; k < arr.length; ++k) {           
             //增加3*3小方格
             for (var r = 0; r < 3; ++r)
                 for (var c = 0; c < 3; ++c) {
                     var div = document.createElement("div");
                     var x = c * 100;
                     var y = r * 100;
-                    div.style.cssText = "width:100px;height:100px;position:fixed; left:" + x + "px; top:" + y + "px; border: 2px solid #fff; box-sizing: border-box;";
-                    console.log(div.style.cssText);
+                    div.style.cssText = "width:100px;height:100px;position:fixed; left:" + x + "px; top:" + y + "px; border: 2px solid #fff;position:absolute; box-sizing: border-box;background-image:url(images/a"+k+".jpg);background-size: 300px 300px;";
+                    
+                    // 改变每一个div的位置
+                    div.style.left = c * 100 +"px";
+                    div.style.top = r * 100 + "px";
+
+                    // 改变背景图相应的位置
+                    div.style.backgroundPositionX = -c*100+"px";
+                    div.style.backgroundPositionY = -r*100+"px";       
                     arr[k].appendChild(div);
                 }
         }
