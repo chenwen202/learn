@@ -1,4 +1,5 @@
 #include "mathfunc.h"
+#include <string>
 
 float MathFunc::cal_sin(float x)
 {
@@ -16,4 +17,81 @@ float MathFunc::cal_sin(float x)
     }
 
     return r;
+}
+//e.g. "123", then arr[]={3,2,1};
+int toIntegerArr(const char* szValue, int arr[])
+{
+    const char* p = szValue;
+    int size = strlen(szValue);
+    int i =0;
+    for(i = size; i > 0; --i)
+    {
+        arr[size - i] = p[i -1] - '0';
+    }   
+    return size;
+}
+
+char* toStr(int arr[], int len)
+{
+    int l = 0;
+    int i = 0;
+    char *p;
+
+    //cal valid length of arr
+    for(i=len -1; i >0; --i) 
+        if(arr[i] != 0)
+        {
+            l = i;
+            break;
+        }
+    
+    p = new char[l + 1];
+    p[l] = '\0';
+    for( i =l; i >= 0; --i)
+        p[l-i] = arr[i] + '0';
+    return p;
+}
+// i.e.
+//  1234567
+//X     234
+//-------------
+//  4938268
+char* MathFunc::bigval_multiply(const char* szValue1, const char* szValue2)
+{
+    const int NUM = 100;
+    int arr1[NUM] = {0};
+    int arr2[NUM] = {0};
+    int rs1[ NUM +1] = {0};
+    int rs[NUM * NUM] = {0};
+    int i=0, j=0, len1 =0, len2 =0;
+
+    len1 = toIntegerArr(szValue1, arr1);
+    len2 = toIntegerArr(szValue2, arr2);
+
+    for(j=0; j < len2; ++j)
+    {
+        for(i =0; i < len1; ++i)
+        {
+            rs1[i] += arr1[i] * arr2[j];
+            while( rs1[i] >= 10)
+            {
+                rs1[i] -= 10;
+                rs1[i+1] += 1;
+            }            
+        }
+
+        //calculate the sum        
+        for(i=0; i < len1 +1; ++i)
+        {
+            rs[i +j] = rs[i +j] + rs1[i];
+            if( rs[i +j] >= 10)
+            {
+                rs[i +j] -= 10;
+                rs[i +j+1] += 1;
+            }
+            rs1[i] =0;
+        }
+    }
+
+    return toStr(rs, NUM * NUM);
 }

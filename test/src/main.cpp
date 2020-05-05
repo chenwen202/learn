@@ -1,14 +1,20 @@
 #include <iostream>
 #include <math.h>
 #include <string>
+#include "mathfunc.h"
 
 int main() {
-    int b = 12000;
-    char a = b;
-    std::string str; 
-    std::cout<< "int b = 12000, actual "<<(int)a <<std::endl;
-    std::cin>>str;
-    std::cout<<str<<std::endl;
+    
+    MathFunc mf;
+    std::string str1;
+    std::string str2;
+    std::cin>>str1;
+    std::cin>>str2;
+
+    std::cout<< "Output:" << std::endl;;
+    char* p = mf.bigval_multiply(str1.c_str(), str2.c_str());
+    std::cout<< p<<std::endl;
+    delete [] p;
     std::getchar();
     return 0;
 }

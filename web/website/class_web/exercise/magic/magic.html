@@ -15,56 +15,96 @@
             height: 300px;
             margin: 100px auto;
             /* border: 1px solid #ccc; */
+<<<<<<< HEAD
             perspective: 10000px;
+=======
+             perspective: 10000px;
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
         }
         
         #box {
             width: 300px;
             height: 300px;
             margin: 0 auto;
+<<<<<<< HEAD
             position: absolute;
             transform-style: preserve-3d;            
+=======
+            position: relative;
+            transform-style: preserve-3d;             
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
             animation: testanimations 10s linear infinite;
         }
         
-        .share {
+        .box-page {
             width: 300px;
             height: 300px;
             margin: 0 auto;
+<<<<<<< HEAD
             position: fixed;         
             transform-style: preserve-3d;
         }
         
         .box_top {
+=======
+            position: absolute;
+            box-sizing: border-box;
+            transform-style:preserve-3d;
+        }
+        
+        .top {
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
             /*background-color: red;*/
             transform: translateZ(150px) rotateX(0deg);
         }
         
+<<<<<<< HEAD
         .box_right {
+=======
+        .right {
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
             /*background-color: green;*/
             transform: translateX(-150px) rotateY(90deg);
         }
         
+<<<<<<< HEAD
         .box_bottom {
            /* background-color: blue;*/
             transform: translateZ(-150px) rotateX(180deg);
         }
         
         .box_left {
+=======
+        .bottom {
+            /*background-color: blue;*/
+            transform: translateZ(-150px) rotateX(180deg);
+        }
+        
+        .left {
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
             /*background-color: yellow;*/
             transform: translateX(150px) rotateY(-90deg);
         }
         
+<<<<<<< HEAD
         .box_front {
+=======
+        .front {
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
             /*background-color: orange;*/
             transform: translateY(150px) rotateX(-90deg);
         }
         
+<<<<<<< HEAD
         .box_back {
+=======
+        .back {
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
             /*background-color: purple;*/
             transform: translateY(-150px) rotateX(90deg);
         }
         
+<<<<<<< HEAD
         @keyframes testanimations {
             100% {
                 transform: rotatex(360deg) rotatey(360deg) rotatez(360deg);
@@ -79,6 +119,24 @@
         .box-page div:nth-child(2),.box-page div:nth-child(4),.box-page div:nth-child(6),.box-page div:nth-child(8){
             transform:rotateX(0deg);
             animation: rotatex 6s linear infinite;
+=======
+       
+        
+        .box-page div:nth-child(2),.box-page div:nth-child(4),.box-page div:nth-child(6),.box-page div:nth-child(8) {    
+            transform: rotateX(0deg);
+            animation: rotatex 6s linear infinite;
+        }
+
+        .box-page div:first-child,.box-page div:nth-child(3),.box-page div:nth-child(5),.box-page div:nth-child(7),.box-page div:nth-child(9) {
+            transform: rotateY(0deg);
+            animation: rotatey 6s linear infinite;
+        }
+              
+         @keyframes testanimations {
+            100% {
+                transform: rotatex(360deg) rotatey(360deg) rotatez(360deg);
+            }
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
         }
         
         @keyframes rotatex {
@@ -100,6 +158,7 @@
             }
         }
 
+<<<<<<< HEAD
         @keyframes rotatey{
             20%{
                 transform: rotateY(0deg);
@@ -143,21 +202,42 @@
             }
         }
 
+=======
+        @keyframes rotatey {
+            20% {
+                transform: rotateY(0deg);
+                background-size: 300px 300px;
+            }
+            40% {
+                transform: rotateY(540deg);
+                background-size: 100px 100px;
+            }
+            60% {
+                transform: rotateY(540deg);
+                background-size: 100px 100px;
+            }
+            80% {
+                transform: rotateY(0deg);
+                background-size: 300px 300px;
+            }
+        }
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
     </style>
 </head>
 
 <body>
     <div id="container">
         <div id="box">
-            <div class="box_top share"></div>
-            <div class="box_right share"></div>
-            <div class="box_bottom share"></div>
-            <div class="box_left share"></div>
-            <div class="box_front share"></div>
-            <div class="box_back share"></div>
+            <div class="top box-page"></div>
+            <div class="right box-page"></div>
+            <div class="bottom box-page"></div>
+            <div class="left box-page"></div>
+            <div class="front box-page"></div>
+            <div class="back box-page"></div>
         </div>
     </div>
 
+<<<<<<< HEAD
     <script>
         var arr = document.querySelectorAll("#box>div");
         console.log(arr.length);
@@ -177,7 +257,29 @@
                     // 改变背景图相应的位置
                     div.style.backgroundPositionX = -c*100+"px";
                     div.style.backgroundPositionY = -r*100+"px";       
+=======
+    <script type="text/javascript">
+        var arr = document.querySelectorAll("#box>div");
+        console.log(arr.length);
+        for (var k = 0; k < arr.length; ++k) {          
+
+            //增加3*3小方格
+            for (var r = 0; r < 3; ++r)
+                for (var c = 0; c < 3; ++c) {
+                    var div = document.createElement("div");  
+>>>>>>> 2fa52629d905d06d5b066e406bcc0f50fbd6eb0a
                     arr[k].appendChild(div);
+
+                    div.style.cssText = "width:100px;height:100px;position:absolute; border: 2px solid #fff; box-sizing: border-box;background-image: url(images/a" + k + ".jpg); background-size:300px 300px;";
+
+                    //box position
+                    div.style.left = c * 100 + "px";
+                    div.style.top = r * 100 + "px";
+
+                    //background shift
+                    div.style.backgroundPositionX = - c * 100 + "px";
+                    div.style.backgroundPositionY = - r * 100 + "px";      
+                    
                 }
         }
     </script>
