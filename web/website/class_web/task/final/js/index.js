@@ -26,7 +26,9 @@ function chooseMenu(obj) {
 		if(list[i].id == name )
 		{
 			if(list[i].hidden)
-				list[i].hidden =false;
+			{
+				list[i].hidden =false;				
+			}
 		}		
 		else
 		{
@@ -34,6 +36,7 @@ function chooseMenu(obj) {
 				list[i].hidden = true;
 		}
 	};
+
 
 	
 }

@@ -141,12 +141,26 @@ h4 {
 
 #content{ 
   float:right; 
-  width:595px; 
+  width:575px; 
   min-height: 440px;
   margin-bottom:5px;
+  padding-left: 10px;
+  padding-right: 10px;
   background:#cff;
-  text-indent: 2em;
+  text-indent: 2em;   
 }
+
+#miaodui {
+  text-align: center;  
+  margin-bottom:5px;
+  padding: 0, auto;  
+}
+
+ul.digit{  
+  list-style-position: inside;
+  list-style-type: none;    
+}
+
 
 .line {
 	width: 80%;
