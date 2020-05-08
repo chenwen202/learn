@@ -1,4 +1,10 @@
 
+function confirmSubmit()
+{
+	alert("欢迎来浏览中国传统文化-春联页面， ~~~~");
+}
+
+
 function chooseMenu(obj) {
 	var element = document.getElementById('content');
 	if( !element.hasChildNodes()) return;

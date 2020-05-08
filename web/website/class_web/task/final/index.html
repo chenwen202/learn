@@ -10,8 +10,8 @@
 	<div id="container">
 		<div id="header" >
 			<p><img src="images/banner.jpg" alt=""></p>
-			<div id="title">
-				中华传统文化之春联
+			<div class="sign">
+				中华传统文化之<span class="flicker">春联</span>
 			</div>
 			
 		</div>
@@ -31,7 +31,7 @@
 项目：<input type="radio" name="menu" value="2" checked="checked" onclick="chooseMenu(this)"/>春联
 <input type="radio" name="menu" value="1" onclick="chooseMenu(this)" />拾趣<!--name一样-->
 <input type="radio" name="menu" value="0" onclick="chooseMenu(this)"/>妙对
-<input type="submit" value="提交" /><!--提交按钮-->
+<input type="submit" value="提交" onclick="confirmSubmit()" /><!--提交按钮-->
 </form>
 				</div>
 				<div id="imglist">
