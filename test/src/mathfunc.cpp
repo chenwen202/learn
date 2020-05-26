@@ -1,5 +1,6 @@
 #include "mathfunc.h"
-#include <string>
+#include <cmath>
+#include <cstring>
 
 float MathFunc::cal_sin(float x)
 {
@@ -22,7 +23,7 @@ float MathFunc::cal_sin(float x)
 int toIntegerArr(const char* szValue, int arr[])
 {
     const char* p = szValue;
-    int size = strlen(szValue);
+    int size = std::strlen(szValue);
     int i =0;
     for(i = size; i > 0; --i)
     {
@@ -94,4 +95,19 @@ char* MathFunc::bigval_multiply(const char* szValue1, const char* szValue2)
     }
 
     return toStr(rs, NUM * NUM);
+}
+
+
+std::vector<std::vector<double>> MathFunc::getModel(const int& n, const double& sigma)
+{
+    double pi = 3.1415926;
+    double weight = 1/ ( 2 * pi * sigma * sigma);
+
+    std::vector<std::vector<double>> model(n,std::vector<double>(n,0.0));
+    for( int i =0; i < n; ++i)
+        for( int j =0; j < n; ++j)
+        {
+            model[i][j] = weight * std::exp( -((i - n/2)*(i - n/2) + (j - n/2)*(j - n/2))/ (2 * sigma * sigma) );
+        }
+    return model;
 }

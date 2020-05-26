@@ -1,24 +1,63 @@
 #include <iostream>
-#include <math.h>
-#include <string>
+#include <cmath>
+#include <cstring>
 #include "mathfunc.h"
 
-int main() {
-    
-    MathFunc mf;
-    std::string str1;
-    std::string str2;
-    std::cin>>str1;
-    std::cin>>str2;
 
-    std::cout<< "Output:" << std::endl;;
-    char* p = mf.bigval_multiply(str1.c_str(), str2.c_str());
-    std::cout<< p<<std::endl;
-    delete [] p;
-    std::getchar();
+
+int main() {
+    // int sum = 0;
+    // for( int i=0; i < 100; ++i)   
+    //     sum += i;
+    // std::cout<<"sum: "<< sum <<std::endl; 
+
+    // MathFunc func;
+    // int     n = 3;
+    // std::vector<std::vector<double>> model = func.getModel(n, 0.75);
+    // for( int i=0; i< n; ++i)
+    // {
+
+    //     for( int j=0; j < n; ++j)
+    //         std::cout<<model[i][j]<<" ";
+        
+    //     std::cout<<std::endl;
+    // }
+    auto f = [](float data[], int blocksize) {
+        for(auto i =0; i < blocksize; ++i)
+        {            
+            for(auto j =0; j< blocksize; ++j)
+                std::cout<<"["<<i<<"]["<<j<<"] ="<<data[i*blocksize + j] << " ";
+            std::cout<<std::endl;
+        }
+            
+    };
+
+    const int DIR_FILTER_SIZE = 2;
+	int blocksize = 2 * DIR_FILTER_SIZE + 1;
+	float *filter = new float[blocksize*blocksize];
+	float tempSum = 0.0;
+	for (int y = 0; y < blocksize; y++) {
+		for (int x = 0; x < blocksize; x++) {
+			filter[y*blocksize + x] = (float)(blocksize - (abs(DIR_FILTER_SIZE - x) + abs(DIR_FILTER_SIZE - y)));
+			tempSum += filter[y*blocksize + x];
+		}
+	}
+
+    f(filter, blocksize);
+
+    std::cout<<"tempSum: "<<tempSum << std::endl;
+
+	for (int y = 0; y < blocksize; y++) {
+		for (int x = 0; x < blocksize; x++) {
+			filter[y*blocksize + x] /= tempSum;
+		}
+	}
+	
+    f(filter, blocksize);
+
+
     return 0;
 }
-
 
 
 
