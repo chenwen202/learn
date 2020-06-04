@@ -44,20 +44,17 @@ public:
     }
 };
 
+void sum(char b[])
+{
+    printf("size of b:%d\n",sizeof(b));
+}
+
+
 int main() {
-    struct bit {
-        int a:3;
-        int b:3;
-        int c:2;
-    } num;
-        
-    char *c = (char*)&num;    
-    *c = 0xdb;
-    
-    std::cout<<"a: " << num.a << " b: "<< num.b << " c: " << num.c <<std::endl;
+    char a[] = {"111111"};
+    std::cout<<"sizeof(a): " << sizeof(a) <<std::endl;
 
-   
-
+    sum(a);
     // int d = 5;
     // int c = 3;
     // const int *p = &d;
