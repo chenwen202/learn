@@ -15,21 +15,22 @@ public:
     vector<string> departmentStatistics(vector<string> &employees, vector<string> &friendships) {
         // write your code here.
 		map<int, string> empls;  
-        vector<string> deps;
-        map<int, bool> friOfempl;    
-        map<string,vector<int>> empOfdeps; 
-        vector<string> ret;     
+        vector<string> deps;               
+		map<string,int> numOfempIndep;
+		map<string,int> numOffriIndep;
+		map<int, bool> friOfempl;  
+        vector<string> result;     
                 
         for(auto v: employees)
         {
             int id = stoi(v.substr(0,v.find(',')));
             size_t pos = v.rfind(',');
             string dep = v.substr(pos+2,v.length() - pos -1);
-            empls[id] =dep;
+            empls[id] = dep;
             friOfempl[id] = false;
-            if(empOfdeps[dep].empty())
+            if(numOfempIndep[dep] == 0)
                 deps.push_back(dep);
-            empOfdeps[dep].push_back(id);           
+            ++numOfempIndep[dep];           
         }
                 
         for(auto v: friendships)
@@ -40,23 +41,23 @@ public:
             
             if(empls[id1].compare(empls[id2]) != 0)
             {
+				if(!friOfempl[id1])
+					++numOffriIndep[empls[id1]];
+				if(!friOfempl[id2])
+					++numOffriIndep[empls[id2]];
                 friOfempl[id1] = true;
                 friOfempl[id2] = true;
+				
             }
         }
 
         for(auto v: deps)      
-        {
-            int num1 =0;
-            for(vector<int>::iterator it = empOfdeps[v].begin(); it != empOfdeps[v].end(); ++it)
-            {
-                if(friOfempl[*it]) ++num1;
-            }
-            string str = v + ": " + to_string(num1) + " of " + to_string(empOfdeps[v].size()); 
-            ret.push_back(str);            
+        {            
+            string str = v + ": " + to_string(numOffriIndep[v]) + " of " + to_string(numOfempIndep[v]); 
+            result.push_back(str);            
         }   
 
-        return ret;          
+        return result;          
     }
 };
 
