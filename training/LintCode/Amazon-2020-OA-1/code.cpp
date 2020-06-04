@@ -14,7 +14,7 @@ public:
      */
     vector<string> departmentStatistics(vector<string> &employees, vector<string> &friendships) {
         // write your code here.
-       map<int, string> empls;  
+		map<int, string> empls;  
         vector<string> deps;
         map<int, bool> friOfempl;    
         map<string,vector<int>> empOfdeps; 
@@ -22,7 +22,7 @@ public:
                 
         for(auto v: employees)
         {
-            int id = atoi(v.substr(0,v.find(',')).c_str());
+            int id = stoi(v.substr(0,v.find(',')));
             size_t pos = v.rfind(',');
             string dep = v.substr(pos+2,v.length() - pos -1);
             empls[id] =dep;
@@ -34,9 +34,9 @@ public:
                 
         for(auto v: friendships)
         {
-            int id1 = atoi(v.substr(0,v.find(',')).c_str());
+            int id1 = stoi(v.substr(0,v.find(',')));
             int pos = v.rfind(',');
-            int id2 = atoi(v.substr(pos+2,v.length()).c_str());
+            int id2 = stoi(v.substr(pos+2,v.length()));
             
             if(empls[id1].compare(empls[id2]) != 0)
             {
