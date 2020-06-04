@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <vector>
 #include <map>
 
@@ -19,13 +19,32 @@ public:
 		map<string,int> numOfempIndep;
 		map<string,int> numOffriIndep;
 		map<int, bool> friOfempl;  
-        vector<string> result;     
+        vector<string> result; 
+
+		auto f = [](const string& str, const string& pattern)
+		{
+			vector<string> r;
+			char* src = new char[str.length() + 1];
+			strcpy(src, str.c_str());
+			const char* tmpStr  = std::strtok(src, pattern.c_str());
+			while(tmpStr )
+			{
+				if(r.size() > 1)
+				{
+					r.pop_back();					
+				}				
+				r.push_back(string(tmpStr));
+				tmpStr = strtok(NULL, pattern.c_str());
+			}
+			delete[] src;
+			return r;
+		};
                 
         for(auto v: employees)
         {
-            int id = stoi(v.substr(0,v.find(',')));
-            size_t pos = v.rfind(',');
-            string dep = v.substr(pos+2,v.length() - pos -1);
+			auto r = f(v, ",");			
+            int id = stoi(r[0]);            
+            string dep = r[1].erase(0,1);
             empls[id] = dep;
             friOfempl[id] = false;
             if(numOfempIndep[dep] == 0)
@@ -35,9 +54,9 @@ public:
                 
         for(auto v: friendships)
         {
-            int id1 = stoi(v.substr(0,v.find(',')));
-            int pos = v.rfind(',');
-            int id2 = stoi(v.substr(pos+2,v.length()));
+			auto r = f(v, ",");		
+            int id1 = stoi(r[0]);            
+            int id2 = stoi(r[1]);
             
             if(empls[id1].compare(empls[id2]) != 0)
             {
