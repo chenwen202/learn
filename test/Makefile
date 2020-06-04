@@ -13,8 +13,8 @@ all: $(BIN)/$(EXECUTABLE)
 clean:
 	$(RM) $(BIN)/$(EXECUTABLE)
 
-run: all
-	./$(BIN)/$(EXECUTABLE)
+# run: all
+# 	./$(BIN)/$(EXECUTABLE)
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
 	$(CC) $(CPP_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)

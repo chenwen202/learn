@@ -4,8 +4,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build & run",
-            "type": "shell",
+            "label": "build",
+            "type": "process",
             "group": {
                 "kind": "test",
                 "isDefault": true
@@ -21,25 +21,8 @@
             },
             "args": [
                 "-c",
-                "mingw32-make run"
-            ]
-        },
-        {
-            "label": "clean",
-            "type": "shell",
-            "windows": {
-                "command": "powershell"
-            },
-            "linux": {
-                "command": "bash"
-            },
-            "osx": {
-                "command": "bash"
-            },
-            "args": [
-                "-c",
-                "mingw32-make clean"
-            ]
+                "mingw32-make"
+            ]           
         }
     ]
 }
