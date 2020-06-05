@@ -11,7 +11,7 @@ class Aobing extends Thread {
      */
     public boolean isFlag() {        
         return flag;
-    }
+    } 
 
 	@Override
 	public void run() {
