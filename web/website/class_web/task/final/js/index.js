@@ -1,7 +1,7 @@
 
 function confirmSubmit()
 {
-	alert("欢迎来浏览中国传统文化-春联页面， ~~~~");
+	alert("欢迎来浏览中华传统文化-春联页面， ~~~~");
 }
 
 
